@@ -19,7 +19,13 @@ struct TrieNode {
 //----------------------------------------------------------------
 // AVLTree::class
 //----------------------------------------------------------------
-class AVLTree {
+class Trie {
 public:
-
+bool Trie::insert(string);
+int Trie::count();
+int Trie::getSize();
+bool Trie::find(string);
+int Trie::completeCount(string);
+vector<string> Trie::complete(string);
+Trie& Trie::operator=(const Trie&);
 };
