@@ -5,5 +5,5 @@
 #include "Trie.h"
 using namespace std;
 int main() {
-    
+    Trie tree = Trie();
 }

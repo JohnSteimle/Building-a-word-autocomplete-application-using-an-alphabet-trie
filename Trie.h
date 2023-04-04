@@ -13,7 +13,8 @@ using namespace std;
 // TrieNode::constructor
 //----------------------------------------------------------------
 struct TrieNode {
-    
+    TrieNode *children[26];
+    bool endWord;
 };
  
 //----------------------------------------------------------------
