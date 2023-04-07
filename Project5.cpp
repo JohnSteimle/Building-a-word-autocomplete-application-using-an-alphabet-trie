@@ -6,7 +6,7 @@
 using namespace std;
 int main() {
     Trie tree = Trie();
-    tree.insert("hello");
-    tree.insert("an");
-    tree.insert("and");
+    cout << tree.insert("hello");
+    cout << tree.insert("an");
+    cout << tree.insert("and");
 }
