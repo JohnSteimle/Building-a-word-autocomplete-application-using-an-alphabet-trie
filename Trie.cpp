@@ -24,10 +24,11 @@ TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char l
     if(wordLength!=0){
         TrieNode* newNode = new TrieNode();
         node->children[letter-'a'] = newNode;
+        i++;
         letter = word[i];
         wordLength = wordLength-1;
-        i++;
-        insertHelper(word, newNode, letter, wordLength, i);
+        
+        TrieNode* plz = insertHelper(word, newNode, wordLength,letter, i);
     } else {
         node->endWord = true;
         return node;
