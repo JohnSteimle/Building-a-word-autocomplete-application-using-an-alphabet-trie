@@ -45,7 +45,19 @@ int Trie::count(){
     return wordCount;
 }
 int Trie::getSize(){
-
+    countPre=0;
+    sizeHelper(node);
+    return countPre;
+}
+TrieNode* Trie::sizeHelper(TrieNode* nodeToCount){
+    if(nodeToCount){
+        countPre++;
+    for(int i=0; i<26; i++){
+        if(nodeToCount->children[i]){
+            TrieNode* nextNode = sizeHelper(nodeToCount->children[i]);
+        }
+    }
+    }
 }
 bool Trie::find(string word){
     char letter = word[0];
