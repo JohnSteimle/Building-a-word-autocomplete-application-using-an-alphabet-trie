@@ -220,4 +220,3 @@ vector<string> Trie::completeHelper(TrieNode* nodeToSearch, vector<string> words
     }
     return words;
 }
-Trie& Trie::operator=(const Trie& tree){}

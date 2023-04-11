@@ -1,3 +1,9 @@
+//----------------------------------------------------------------
+// Name: John Steimle
+// Project 5 Data Structures     
+// Project5.cpp
+// Driver file for the Alphabet Trie program
+//----------------------------------------------------------------
 #include <iostream>
 #include <fstream>
 #include <string>
