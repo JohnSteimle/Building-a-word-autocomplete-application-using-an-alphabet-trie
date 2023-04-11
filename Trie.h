@@ -36,5 +36,6 @@ TrieNode* findHelp(string, char, int, TrieNode*);
 TrieNode* node = new TrieNode();
 TrieNode* searchNode(TrieNode*);
 TrieNode* sizeHelper(TrieNode*);
+vector<string> completeHelper(TrieNode*, vector<string>, string);
 int countPre=0;
 };

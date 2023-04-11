@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <exception>
+#include "string.h"
 #include "Trie.h"
 using namespace std;
 bool Trie::insert(string word){
@@ -123,5 +124,31 @@ TrieNode* Trie::searchNode(TrieNode* nodeToSearch){
     }
     }
 }
-vector<string> Trie::complete(string word){}
+vector<string> Trie::complete(string word){
+    vector<string> words;
+    TrieNode* temp = node;
+    char letter;
+    countPre=0;
+    for(int i=0; i<word.length(); i++){
+        letter = word[i];
+        temp = temp->children[letter-'a'];
+    }
+    words = completeHelper(temp, words, word);
+    return words;
+}
+vector<string> Trie::completeHelper(TrieNode* nodeToSearch, vector<string> words, string word){
+    
+    for(int i=0; i<26; i++){
+        if(nodeToSearch->children[i]){
+            if(nodeToSearch->endWord==true){
+            char letter = 'a'+i;
+            string wordToAdd = word + word[letter];
+            cout << wordToAdd;
+            words.insert(words.begin(), wordToAdd);
+    }
+            completeHelper(nodeToSearch->children[i], words, word);
+        }
+    }
+    return words;
+}
 Trie& Trie::operator=(const Trie& tree){}

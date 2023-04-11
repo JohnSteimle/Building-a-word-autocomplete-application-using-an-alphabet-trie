@@ -19,5 +19,9 @@ int main() {
     // cout << tree.insert("andlingl");
     // cout << tree.insert("andlingkc") << endl;
     cout << tree.completeCount("an") << endl;
-    cout << tree.getSize();
+    cout << tree.getSize() << endl;
+    vector<string> words = tree.complete("an");
+    // for(int i=0; i<words.size(); i++){
+    //     cout << words.at(i) << endl;
+    // }
 }
