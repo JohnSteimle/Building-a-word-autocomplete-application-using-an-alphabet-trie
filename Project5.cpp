@@ -15,13 +15,13 @@ int main() {
     cout << tree.insert("andy");
     cout << tree.find("andy");
     cout << tree.count() << endl;
-    // cout << tree.insert("andling");
+    cout << tree.insert("andling");
     // cout << tree.insert("andlingl");
     // cout << tree.insert("andlingkc") << endl;
     cout << tree.completeCount("an") << endl;
     cout << tree.getSize() << endl;
     vector<string> words = tree.complete("an");
-    // for(int i=0; i<words.size(); i++){
-    //     cout << words.at(i) << endl;
-    // }
+    for(int i=0; i<words.size(); i++){
+        cout << words.at(i) << endl;
+    }
 }

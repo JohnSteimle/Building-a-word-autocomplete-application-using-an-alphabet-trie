@@ -132,21 +132,24 @@ vector<string> Trie::complete(string word){
     for(int i=0; i<word.length(); i++){
         letter = word[i];
         temp = temp->children[letter-'a'];
+        if(temp->endWord==true){
+            words.push_back(word);
     }
+    }
+    
     words = completeHelper(temp, words, word);
     return words;
 }
 vector<string> Trie::completeHelper(TrieNode* nodeToSearch, vector<string> words, string word){
-    
+    string wordToAdd;
     for(int i=0; i<26; i++){
         if(nodeToSearch->children[i]){
             if(nodeToSearch->endWord==true){
             char letter = 'a'+i;
-            string wordToAdd = word + word[letter];
-            cout << wordToAdd;
-            words.insert(words.begin(), wordToAdd);
+            wordToAdd = word + letter;
+            words.push_back(wordToAdd);
     }
-            completeHelper(nodeToSearch->children[i], words, word);
+            words = completeHelper(nodeToSearch->children[i], words, wordToAdd);
         }
     }
     return words;
