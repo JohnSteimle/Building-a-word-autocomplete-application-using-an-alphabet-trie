@@ -8,5 +8,7 @@ int main() {
     Trie tree = Trie();
     cout << tree.insert("hello");
     cout << tree.insert("an");
-    cout << tree.insert("and");
+    cout << tree.insert("and") << endl;
+    cout << tree.find("an");
+    cout << tree.find("and");
 }
