@@ -132,9 +132,6 @@ vector<string> Trie::complete(string word){
     for(int i=0; i<word.length(); i++){
         letter = word[i];
         temp = temp->children[letter-'a'];
-        if(temp->endWord==true){
-            words.push_back(word);
-    }
     }
     
     words = completeHelper(temp, words, word);

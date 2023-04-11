@@ -23,7 +23,7 @@ int main() {
     cin >> show;
     vector<string> words = tree.complete(prefix);
     if(show == "yes"){
-        cout << "---------";
+        cout << "---------" << endl;
         for(int i=0; i<words.size(); i++){
             cout << words.at(i) << endl;
         }
