@@ -1,7 +1,7 @@
 //----------------------------------------------------------------
 // Name: John Steimle
 // Project 5 Data Structures     
-// 
+// implements the functions in Trie.h
 // 
 //----------------------------------------------------------------
 #include <iostream>
@@ -11,6 +11,12 @@
 #include "string.h"
 #include "Trie.h"
 using namespace std;
+//----------------------------------------------------------------
+// Trie::insert inserts a word into the tree
+//    Returns:  bool
+//    Parameters:
+//       string word
+//----------------------------------------------------------------
 bool Trie::insert(string word){
     if(find(word)==false){
         int wordLength = word.length();
@@ -22,6 +28,12 @@ bool Trie::insert(string word){
         return false;
     }
 }
+//----------------------------------------------------------------
+// Trie::insertHelper helps the insert function
+//    Returns: TrieNode*
+//    Parameters:
+//       string word TrieNode* node, int wordLength, char letter, int i
+//----------------------------------------------------------------
 TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char letter, int i){
     if(wordLength>0){
         TrieNode* newNode = new TrieNode();
@@ -42,14 +54,32 @@ TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char l
         return node;
     }
 }
+//----------------------------------------------------------------
+// Trie::count returns number of words in trie
+//    Returns:  int
+//    Parameters:
+//       None
+//----------------------------------------------------------------
 int Trie::count(){
     return wordCount;
 }
+//----------------------------------------------------------------
+// Trie::getSize returns number of nodes in trie
+//    Returns:  int
+//    Parameters:
+//       None
+//----------------------------------------------------------------
 int Trie::getSize(){
     countPre=0;
     sizeHelper(node);
     return countPre;
 }
+//----------------------------------------------------------------
+// Trie::sizeHelper
+//    Returns:  TireNode*
+//    Parameters:
+//       TrieNode* nodeToCount
+//----------------------------------------------------------------
 TrieNode* Trie::sizeHelper(TrieNode* nodeToCount){
     if(nodeToCount){
         countPre++;
@@ -60,6 +90,12 @@ TrieNode* Trie::sizeHelper(TrieNode* nodeToCount){
     }
     }
 }
+//----------------------------------------------------------------
+// Trie::find searches the Trie for word
+//    Returns:  bool
+//    Parameters:
+//       string word
+//----------------------------------------------------------------
 bool Trie::find(string word){
     char letter = word[0];
      if(node->children[letter-'a']!=nullptr){
@@ -77,6 +113,12 @@ bool Trie::find(string word){
     }
     
 }
+//----------------------------------------------------------------
+// Trie::findHelp helps search the Trie for word
+//    Returns:  TrieNode* 
+//    Parameters:
+//       string word, char letter, int i, TrieNode* iterator
+//----------------------------------------------------------------
 TrieNode* Trie::findHelp(string word, char letter, int i, TrieNode* iterator){
     if(iterator){
     if(iterator->endWord==true && i==(word.length())){
@@ -98,6 +140,12 @@ TrieNode* Trie::findHelp(string word, char letter, int i, TrieNode* iterator){
         return nullptr;
     }
 }
+//----------------------------------------------------------------
+// Trie::completeCount returns number of words matching specified prefix
+//    Returns:  int
+//    Parameters:
+//       string word
+//----------------------------------------------------------------
 int Trie::completeCount(string word){
     TrieNode* temp = node;
     char letter;
@@ -111,6 +159,12 @@ int Trie::completeCount(string word){
     TrieNode* checkNode = searchNode(temp);
     return countPre;
 }
+//----------------------------------------------------------------
+// Trie::searchNode helps the completeCount function
+//    Returns:  TrieNode*
+//    Parameters:
+//       TrieNode* nodeToSearch
+//----------------------------------------------------------------
 TrieNode* Trie::searchNode(TrieNode* nodeToSearch){
     if(nodeToSearch){
     if(nodeToSearch->endWord==true){
@@ -124,6 +178,12 @@ TrieNode* Trie::searchNode(TrieNode* nodeToSearch){
     }
     }
 }
+//----------------------------------------------------------------
+// Trie::complete returns a vector of words matching a certain prefix
+//    Returns:  vector<string>
+//    Parameters:
+//       string word
+//----------------------------------------------------------------
 vector<string> Trie::complete(string word){
     vector<string> words;
     TrieNode* temp = node;
@@ -137,6 +197,12 @@ vector<string> Trie::complete(string word){
     words = completeHelper(temp, words, word);
     return words;
 }
+//----------------------------------------------------------------
+// Trie::completeHelper helps return a vector of words matching a certain prefix
+//    Returns:  vector<string>
+//    Parameters:
+//       TrieNode* nodeToSearch, vector<string> words, string word
+//----------------------------------------------------------------
 vector<string> Trie::completeHelper(TrieNode* nodeToSearch, vector<string> words, string word){
     string wordToAdd;
     for(int i=0; i<26; i++){
