@@ -11,4 +11,7 @@ int main() {
     cout << tree.insert("and") << endl;
     cout << tree.find("an");
     cout << tree.find("and");
+    cout << tree.find("andy");
+    cout << tree.insert("andy");
+    cout << tree.find("andy");
 }
