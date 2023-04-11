@@ -23,7 +23,7 @@ bool Trie::insert(string word){
     }
 }
 TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char letter, int i){
-    if(wordLength!=0){
+    if(wordLength>0){
         TrieNode* newNode = new TrieNode();
         if(node->children[letter-'a']==nullptr){
         node->children[letter-'a'] = newNode;
@@ -37,7 +37,7 @@ TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char l
         wordLength = wordLength-1;
         }
         TrieNode* plz = insertHelper(word, newNode, wordLength,letter, i);
-    } else {
+    } else if(wordLength==0) {
         node->endWord = true;
         return node;
     }
@@ -144,10 +144,13 @@ vector<string> Trie::completeHelper(TrieNode* nodeToSearch, vector<string> words
     string wordToAdd;
     for(int i=0; i<26; i++){
         if(nodeToSearch->children[i]){
-            if(nodeToSearch->endWord==true){
+          if(nodeToSearch->children[i]->endWord==true){
             char letter = 'a'+i;
             wordToAdd = word + letter;
-            words.push_back(wordToAdd);
+            words.push_back(wordToAdd);  
+    } else {
+        char letter = 'a'+i;
+        wordToAdd = word + letter;
     }
             words = completeHelper(nodeToSearch->children[i], words, wordToAdd);
         }
