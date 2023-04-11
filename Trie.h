@@ -21,6 +21,8 @@ struct TrieNode {
 // Trie::class
 //----------------------------------------------------------------
 class Trie {
+private:
+    int wordCount;
 public:
 bool insert(string);
 int count();
@@ -32,4 +34,5 @@ Trie& operator=(const Trie&);
 TrieNode* insertHelper(string, TrieNode*, int, char, int);
 TrieNode* findHelp(string, char, int, TrieNode*);
 TrieNode* node = new TrieNode();
+
 };

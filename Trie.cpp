@@ -15,6 +15,7 @@ bool Trie::insert(string word){
         int wordLength = word.length();
         char letter = word[0];
         insertHelper(word, node, wordLength, letter, 0);
+        wordCount++;
         return true;
     } else {
         return false;
@@ -40,7 +41,9 @@ TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char l
         return node;
     }
 }
-int Trie::count(){}
+int Trie::count(){
+    return wordCount;
+}
 int Trie::getSize(){}
 bool Trie::find(string word){
     char letter = word[0];
@@ -77,13 +80,6 @@ TrieNode* Trie::findHelp(string word, char letter, int i, TrieNode* iterator){
         return node;
     }
     }
-    
-    
-    
-    
-    
-
-    
 }
 int Trie::completeCount(string word){}
 vector<string> Trie::complete(string word){}

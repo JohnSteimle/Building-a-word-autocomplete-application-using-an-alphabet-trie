@@ -14,4 +14,5 @@ int main() {
     cout << tree.find("andy");
     cout << tree.insert("andy");
     cout << tree.find("andy");
+    cout << tree.count();
 }
