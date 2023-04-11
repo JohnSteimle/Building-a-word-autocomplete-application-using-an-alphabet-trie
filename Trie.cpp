@@ -44,7 +44,9 @@ TrieNode* Trie::insertHelper(string word, TrieNode* node, int wordLength, char l
 int Trie::count(){
     return wordCount;
 }
-int Trie::getSize(){}
+int Trie::getSize(){
+
+}
 bool Trie::find(string word){
     char letter = word[0];
      if(node->children[letter-'a']!=nullptr){
@@ -79,8 +81,35 @@ TrieNode* Trie::findHelp(string word, char letter, int i, TrieNode* iterator){
     } else {
         return node;
     }
+    } else {
+        return nullptr;
     }
 }
-int Trie::completeCount(string word){}
+int Trie::completeCount(string word){
+    TrieNode* temp = node;
+    char letter;
+    countPre=0;
+    for(int i=0; i<word.length(); i++){
+        letter = word[i];
+        temp = temp->children[letter-'a'];
+    }
+    if(temp){
+    }
+    TrieNode* checkNode = searchNode(temp);
+    return countPre;
+}
+TrieNode* Trie::searchNode(TrieNode* nodeToSearch){
+    if(nodeToSearch){
+    if(nodeToSearch->endWord==true){
+        countPre++;
+    }
+    
+    for(int i=0; i<26; i++){
+        if(nodeToSearch->children[i]){
+            TrieNode* nextNode = searchNode(nodeToSearch->children[i]);
+        }
+    }
+    }
+}
 vector<string> Trie::complete(string word){}
 Trie& Trie::operator=(const Trie& tree){}
